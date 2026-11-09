@@ -1,0 +1,185 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * - Keep every @import in this top block, above @theme and the rest of the file. Install an
+ *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
+ *   build resolves @import from the filesystem. Load those with a <link> in the head() of
+ *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The design lives in this file: oklch color tokens on the shadcn variables
+ * (--background, --foreground, --primary, --secondary, --muted, --accent, ...) plus
+ * new tokens as needed, font tokens, and custom styles and animations.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-primary-glow: var(--primary-glow);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger-soft: var(--danger-soft);
+  --color-primary-soft: var(--primary-soft);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-sky-1: var(--sky-1);
+  --color-mod-1: var(--mod-1); --color-mod-2: var(--mod-2); --color-mod-3: var(--mod-3); --color-mod-4: var(--mod-4); --color-mod-5: var(--mod-5); --color-mod-6: var(--mod-6);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --shadow-soft: var(--shadow-soft);
+  --shadow-float: var(--shadow-float);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 1.25rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.17 0.006 150);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 275);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 275);
+  --primary: oklch(0.6 0.13 200);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-glow: oklch(0.82 0.13 195);
+  --secondary: oklch(0.97 0.004 150);
+  --secondary-foreground: oklch(0.18 0.03 275);
+  --muted: oklch(0.97 0.008 220);
+  --muted-foreground: oklch(0.5 0.01 150);
+  --accent: oklch(0.82 0.15 75);
+  --accent-foreground: oklch(0.18 0.01 150);
+  --destructive: oklch(0.577 0.215 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.62 0.15 160);
+  --success-soft: oklch(0.96 0.05 150);
+  --warning: oklch(0.6 0.15 65);
+  --warning-soft: oklch(0.96 0.06 85);
+  --danger-soft: oklch(0.95 0.03 20);
+  --primary-soft: oklch(0.95 0.04 200);
+  --ink: oklch(0.18 0.03 230);
+  --ink-foreground: oklch(0.99 0 0);
+  --border: oklch(0.91 0.006 150);
+  --input: oklch(0.93 0.008 275);
+  --ring: oklch(0.6 0.13 200);
+  --sky-1: oklch(0.66 0.15 248);
+  --mod-1: oklch(0.78 0.15 75); --mod-2: oklch(0.72 0.14 200); --mod-3: oklch(0.72 0.17 150); --mod-4: oklch(0.68 0.18 290); --mod-5: oklch(0.7 0.19 15); --mod-6: oklch(0.7 0.15 250);
+  --sky-2: oklch(0.79 0.1 240);
+  --sky-3: oklch(0.92 0.04 235);
+  --gradient-sky: radial-gradient(ellipse 80% 60% at 50% 0%, color-mix(in oklab, var(--primary) 35%, transparent), transparent 70%), var(--ink);
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --gradient-chip: linear-gradient(135deg, var(--primary), var(--accent));
+  --shadow-soft: 0 1px 2px oklch(0.18 0.03 275 / 4%), 0 8px 24px -8px oklch(0.18 0.03 275 / 10%);
+  --shadow-float: 0 2px 4px oklch(0.18 0.03 275 / 4%), 0 30px 60px -20px oklch(0.3 0.1 260 / 30%);
+  --chart-1: var(--primary); --chart-2: var(--accent); --chart-3: var(--success); --chart-4: var(--warning); --chart-5: var(--primary-glow);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 230);
+  --foreground: oklch(0.96 0.005 220);
+  --card: oklch(0.21 0.025 230 / 85%);
+  --card-foreground: oklch(0.96 0.005 220);
+  --popover: oklch(0.21 0.025 230);
+  --popover-foreground: oklch(0.96 0.005 220);
+  --primary: oklch(0.78 0.13 200);
+  --primary-foreground: oklch(0.16 0.02 230);
+  --secondary: oklch(0.24 0.025 230);
+  --secondary-foreground: oklch(0.96 0.005 220);
+  --muted: oklch(0.19 0.022 230);
+  --muted-foreground: oklch(0.7 0.02 220);
+  --border: oklch(0.78 0.13 200 / 16%);
+  --input: oklch(0.3 0.03 230);
+  --success-soft: oklch(0.3 0.06 160);
+  --warning-soft: oklch(0.32 0.06 75);
+  --danger-soft: oklch(0.3 0.07 20);
+  --primary-soft: oklch(0.3 0.06 200);
+  --ink: oklch(0.12 0.02 230);
+  --shadow-soft: 0 0 0 1px oklch(0.78 0.13 200 / 6%), 0 20px 50px -20px oklch(0.6 0.13 200 / 35%);
+}
+.dark section { position: relative; }
+.dark .rounded-\[24px\], .dark .rounded-3xl { backdrop-filter: blur(12px); }
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { font-family: var(--font-sans); overflow-x: clip; }
+h1, h2, h3 { letter-spacing: -0.035em; }
+@utility bg-sky { background: var(--gradient-sky); }
+@utility bg-grad-primary { background: var(--gradient-primary); }
+@utility bg-grad-chip { background: var(--gradient-chip); }
+@utility serif-em { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+@utility marquee { animation: marquee 40s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee { animation: none; } html { scroll-behavior: auto; } }
+
+@utility bg-grid {
+  background-image: linear-gradient(color-mix(in oklab, var(--ink-foreground) 6%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--ink-foreground) 6%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent);
+}
+@utility text-glow { text-shadow: 0 0 40px color-mix(in oklab, var(--accent) 50%, transparent); }
