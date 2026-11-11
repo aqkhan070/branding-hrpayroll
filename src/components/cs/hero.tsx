@@ -34,7 +34,7 @@ export function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-        <a href="#cta" className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
+        <a href="https://eazisols.com/contact-us" target="_blank" rel="noopener noreferrer" className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition hover:opacity-90">
           Get started
         </a>
         <button type="button" aria-label="Menu" aria-expanded={open} onClick={() => setOpen((o) => !o)} className="navtxt grid h-9 w-9 place-items-center rounded-lg border border-border/40 text-foreground md:hidden">
@@ -84,14 +84,8 @@ export function Hero() {
               className="mx-auto mt-6 max-w-xl text-base text-ink-foreground/70 sm:text-lg lg:mx-0">
               Payroll, attendance, Slack and projects, connected, automated and explained by AI.
             </motion.p>
-            <motion.form initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.35 }}
-              onSubmit={(e) => e.preventDefault()}
-              className="mx-auto mt-8 flex max-w-md items-center gap-2 rounded-full border border-ink-foreground/15 bg-ink-foreground/5 p-1.5 backdrop-blur lg:mx-0">
-              <input aria-label="Work email" placeholder="you@company.com" className="min-w-0 flex-1 bg-transparent px-4 text-sm text-ink-foreground outline-none placeholder:text-ink-foreground/40" />
-              <button className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:bg-primary-glow hover:text-accent-foreground">Start free trial</button>
-            </motion.form>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-1 font-mono text-[11px] text-ink-foreground/55 lg:justify-start">
-              {["14 day free trial", "Setup in minutes", "Slack-native", "Cancel anytime"].map((t) => (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-8 flex flex-wrap justify-center gap-x-5 gap-y-1 font-mono text-[11px] text-ink-foreground/55 lg:justify-start">
+              {["Setup in minutes", "Slack-native", "Cancel anytime"].map((t) => (
                 <span key={t} className="flex items-center gap-1"><Check className="h-3 w-3 text-accent" />{t}</span>
               ))}
             </motion.div>

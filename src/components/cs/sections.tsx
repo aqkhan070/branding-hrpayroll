@@ -442,7 +442,7 @@ export function Closing() {
               <h2 className="text-3xl font-extrabold leading-[1.08] text-ink-foreground sm:text-5xl">Run your whole team from <span className="serif-em text-accent text-glow">one</span> place</h2>
               <p className="mt-4 max-w-lg text-ink-foreground/70">Let AI handle the busywork. Your team focuses on the real work.</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#top" className="rounded-full bg-card px-6 py-3 font-semibold text-foreground transition hover:-translate-y-0.5">Book a demo →</a>
+                <a href="https://eazisols.com/contact-us" target="_blank" rel="noopener noreferrer" className="rounded-full bg-card px-6 py-3 font-semibold text-foreground transition hover:-translate-y-0.5">Book a demo →</a>
                 <a href="#platform" className="rounded-full border border-ink-foreground/20 px-6 py-3 font-semibold text-ink-foreground transition hover:bg-ink-foreground/10">Explore modules</a>
               </div>
               <p className="mt-4 font-mono text-[11px] text-ink-foreground/50">Setup in minutes · Cancel anytime</p>
